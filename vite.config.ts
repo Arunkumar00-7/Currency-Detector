@@ -3,8 +3,8 @@ import react from '@vitejs/plugin-react';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/Currency-Detector',
   plugins: [react()],
+  base: "/Currency-Detector",
   assetsInclude: ['**/*.wasm'],
   optimizeDeps: {
     exclude: ['lucide-react'],
