@@ -28,22 +28,24 @@ function App() {
   // Load the TFLite model
   useEffect(() => {
     const loadModel = async (): Promise<void> => {
-      try {
-        setIsLoading(true);
-        await tf.ready();
+  try {
+    setIsLoading(true);
+    await tf.ready();
 
-        const modelPath = '/model.tflite'; // Model must be inside `public/` folder
-        const loadedModel = await tflite.loadTFLiteModel(modelPath);
+    const modelPath = './Currency-Detector/model.tflite';
+    console.log('Loading model from:', modelPath);
+    const loadedModel = await tflite.loadTFLiteModel(modelPath);
 
-        setModel(loadedModel);
-        console.log('Model loaded successfully');
-      } catch (error) {
-        console.error('Error loading model:', error);
-        setError('Failed to load detection model. Please check the model path.');
-      } finally {
-        setIsLoading(false);
-      }
-    };
+    setModel(loadedModel);
+    console.log('Model loaded successfully');
+  } catch (error) {
+    console.error('Error loading model:', error);
+    setError('Failed to load detection model. Please check the model path.');
+  } finally {
+    setIsLoading(false);
+  }
+};
+
     loadModel();
   }, []);
 
